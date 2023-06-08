@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        form:not(:first-child) {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Username (Use Case 1)</h1>
+    <form action="{{url_for('k_means_recommend')}}" method="post">
+        <label for="username">Username</label>
+        <select name="username" id="username">
+            {% for username in usernames %}
+                <option value="{{ username }}">{{ username }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Recommend">
+    </form>
+
+    <h1>Select Movie (Use Case 2)</h1>
+    <form action="{{url_for('association_recommend')}}" method="post">
+        <label for="movie">Movie</label>
+        <select name="movie" id="movie">
+            {% for movie in movies %}
+                <option value="{{ movie }}">{{ movie }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Recommend">
+    </form>
+</body>
+</html>
